@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #2a2a28;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+@layer components {
+  .container-x { @apply max-w-container mx-auto px-5 sm:px-8; }
+  .btn { @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm uppercase tracking-wider transition rounded-sm; }
+  .btn-primary { @apply btn bg-brand-accent text-white hover:bg-[#b1872f]; }
+  .btn-secondary { @apply btn bg-white text-brand-blue border border-white hover:bg-transparent hover:text-white; }
+  .btn-outline { @apply btn bg-transparent text-brand-blue border border-brand-blue hover:bg-brand-blue hover:text-white; }
+  .btn-dark { @apply btn bg-brand-blue text-white hover:bg-brand-blue-dark; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand-accent; }
+  .h-display { @apply font-serif font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05]; }
+  .h-section { @apply font-serif font-bold text-3xl sm:text-4xl leading-tight; }
+  .prose-trade p { @apply text-brand-charcoal leading-relaxed mb-4; }
+}

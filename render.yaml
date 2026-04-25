@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tps-supply-trade-site
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: TO_EMAIL
+        value: anthony@tpssupply.com
+      - key: FROM_EMAIL
+        value: TPS Supply <onboarding@resend.dev>
+      - key: RESEND_API_KEY
+        sync: false
