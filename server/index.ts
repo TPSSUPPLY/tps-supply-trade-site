@@ -83,7 +83,7 @@ app.get("/healthz", (_req, res) => res.send("ok"));
 // Serve built SPA
 const distDir = path.resolve(__dirname, "../dist");
 app.use(express.static(distDir));
-app.get("*", (_req, res) => {
+app.get(/.*/, (_req, res) => {
   res.sendFile(path.join(distDir, "index.html"));
 });
 
