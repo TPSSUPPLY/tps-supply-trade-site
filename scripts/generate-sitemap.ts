@@ -10,10 +10,19 @@ const DOMAIN = "https://tpssupply.com";
 const CATEGORIES = ["rough-plumbing","finish-plumbing","water-heaters","commercial-plumbing","tools-accessories","pipe-supply"];
 const TRADES = ["plumbers","builders-contractors","property-managers","masons","restaurants-bars"];
 const CITIES = ["morristown","denville","madison","chatham","mendham","chester","boonton","randolph","parsippany","florham-park","dover","rockaway","wharton","stanhope","mountain-lakes","bernardsville"];
+const BLOG_POSTS = [
+  "same-day-pipe-delivery-morris-county-nj",
+  "press-fittings-vs-sweating-propress-megapress-propex",
+  "boiler-hydronic-heating-supply-northern-nj",
+  "whole-house-water-filtration-morris-county",
+  "why-pros-open-7am-tps-supply-counter",
+  "top-10-plumbing-tools-pro-2026",
+];
 
 const urls = [
   "/", "/about", "/services", "/brands", "/categories", "/trade",
-  "/credit-application", "/locations", "/blog", "/blog/welcome", "/contact",
+  "/credit-application", "/locations", "/blog", "/contact",
+  ...BLOG_POSTS.map(s => `/blog/${s}`),
   ...CATEGORIES.map(s => `/categories/${s}`),
   ...TRADES.map(s => `/trade/${s}`),
   ...CITIES.map(s => `/plumbing-supply-${s}-nj`),
