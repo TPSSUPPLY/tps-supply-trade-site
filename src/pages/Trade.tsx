@@ -19,8 +19,8 @@ export default function Trade() {
       <section className="bg-brand-blue text-white">
         <div className="container-x py-20">
           <span className="eyebrow text-brand-accent">For the Trade</span>
-          <h1 className="h-display text-white mt-3">We Sell to Pros, Not Weekend Warriors.</h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/85">Different trade. Different needs. Pick your work and we'll show you how we run for you.</p>
+          <h1 className="h-display text-white mt-3">Built for Pros. Open to All.</h1>
+          <p className="mt-6 max-w-2xl text-lg text-white/85">Different trades have different needs. Whether you're a pro or a homeowner tackling a project — we'll show you how we run for you.</p>
         </div>
       </section>
       <section className="container-x py-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
