@@ -19,7 +19,7 @@ export default function Blog() {
       "@type": "BlogPosting",
       "headline": p.title,
       "datePublished": "2026-04-29",
-      "url": `https://tpssupply.com/blog/${p.slug}`,
+      "url": `https://www.tpssupply.com/blog/${p.slug}`,
     })),
   };
 

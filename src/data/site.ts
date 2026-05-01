@@ -14,7 +14,7 @@ export const SITE = {
     { d: "Saturday", h: "8:00 AM – 2:00 PM" },
     { d: "Sunday", h: "Closed" },
   ],
-  domain: "tpssupply.com",
+  domain: "www.tpssupply.com",
   geo: { lat: 40.798, lng: -74.4774 },
 };
 

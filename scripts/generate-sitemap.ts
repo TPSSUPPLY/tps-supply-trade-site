@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DOMAIN = "https://tpssupply.com";
+const DOMAIN = "https://www.tpssupply.com";
 
 const CATEGORIES = ["rough-plumbing","finish-plumbing","water-heaters","commercial-plumbing","tools-accessories","pipe-supply"];
 const TRADES = ["plumbers","builders-contractors","property-managers","masons","restaurants-bars"];
