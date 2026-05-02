@@ -7,7 +7,55 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+// Render terminates TLS at a proxy; trust it so req.ip reflects the real client.
+app.set("trust proxy", 1);
 app.use(express.json({ limit: "1mb" }));
+
+// --- Spam protection ---
+// Disposable / throwaway email domains. Extend as new abuse patterns appear.
+const DISPOSABLE_EMAIL_DOMAINS = [
+  "mailinator.com",
+  "tempmail.com",
+  "throwaway.com",
+  "guerrillamail.com",
+  "10minutemail.com",
+  "sharklasers.com",
+  "getairmail.com",
+  "yopmail.com",
+  "dispostable.com",
+];
+
+// In-memory rolling rate limiter: 3 submissions per IP per 60 minutes.
+// Single-instance server, so a Map is sufficient; swap for Redis if we scale out.
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+const RATE_LIMIT_MAX = 3;
+const contactHits = new Map<string, number[]>();
+
+function rateLimitContact(ip: string): boolean {
+  const now = Date.now();
+  const cutoff = now - RATE_LIMIT_WINDOW_MS;
+  const hits = (contactHits.get(ip) || []).filter((t) => t > cutoff);
+  if (hits.length >= RATE_LIMIT_MAX) {
+    contactHits.set(ip, hits);
+    return false;
+  }
+  hits.push(now);
+  contactHits.set(ip, hits);
+  return true;
+}
+
+// Returns a reason string if the submission looks like spam, otherwise null.
+// Layer 3 — silent validation: bot-pattern names, spaceless messages, disposable
+// or auto-generated emails. We respond with 200 + the success shape so bots
+// can't tell their submission was discarded.
+function detectSpam(name: string, email: string, message: string): string | null {
+  if (/[BCDFGHJKLMNPQRSTVWXYZ]{3,}/i.test(name)) return "name-consonant-run";
+  if (message.length > 0 && !/\s/.test(message)) return "message-no-spaces";
+  const domain = email.split("@")[1]?.toLowerCase() || "";
+  if (DISPOSABLE_EMAIL_DOMAINS.includes(domain)) return "disposable-email";
+  if (/^[a-z]+(\.[a-z])+\.\d+@/i.test(email)) return "auto-generated-email";
+  return null;
+}
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const TO_EMAIL = process.env.TO_EMAIL || "anthony@tpssupply.com";
@@ -86,8 +134,35 @@ app.post("/api/contact", async (req, res) => {
     const phone = String(data.phone || "").trim();
     const role = String(data.role || "").trim();
     const message = String(data.message || "").trim();
+    const honeypot = String(data.website || "").trim();
+    const ip = req.ip || "unknown";
+
+    // Layer 1 — honeypot. The "website" field is hidden from humans but
+    // happily auto-filled by bots. If it's populated we silently 200 and
+    // skip the email so the bot believes the submission landed.
+    if (honeypot) {
+      console.log(`[contact-spam] honeypot tripped ip=${ip} value=${honeypot.slice(0, 80)}`);
+      return res.json({ ok: true });
+    }
+
+    // Layer 2 — per-IP rate limit (3 / hour rolling).
+    if (!rateLimitContact(ip)) {
+      console.log(`[contact-spam] rate-limited ip=${ip}`);
+      return res.status(429).json({
+        ok: false,
+        error: "Too many submissions. Please wait an hour and try again, or call us directly at (973) 538-3662.",
+      });
+    }
+
     if (!name || !email || !message) {
       return res.status(400).json({ ok: false, error: "name, email, and message are required" });
+    }
+
+    // Layer 3 — silent validation.
+    const spamReason = detectSpam(name, email, message);
+    if (spamReason) {
+      console.log(`[contact-spam] ${spamReason} ip=${ip} name=${name.slice(0, 40)} email=${email.slice(0, 80)}`);
+      return res.json({ ok: true });
     }
     const html = `
       <div style="font-family:Inter,system-ui,sans-serif;color:#2a2a28;max-width:680px;">

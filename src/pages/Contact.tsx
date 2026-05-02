@@ -91,6 +91,16 @@ export default function Contact() {
             </p>
           </div>
           <form onSubmit={handleSubmit} className="lg:col-span-3 bg-white p-8 border border-neutral-200 space-y-5">
+            {/* Honeypot — hidden from humans, irresistible to bots. Server discards
+                any submission where this field is non-empty. */}
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ display: "none" }}
+            />
             <div className="grid md:grid-cols-2 gap-5">
               <label className="block">
                 <span className="text-xs uppercase tracking-widest font-semibold text-brand-blue-dark">Name *</span>
