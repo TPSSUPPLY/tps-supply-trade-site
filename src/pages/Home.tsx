@@ -108,6 +108,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-white border-t">
+        <div className="container-x py-20">
+          <p className="eyebrow text-center text-[#bf9c43]">Visit Our Showroom</p>
+          <h2 className="h-section text-center text-[#1c3454]">For Design, Displays &amp; Walk-In Service</h2>
+          <p className="max-w-2xl mx-auto text-center text-brand-charcoal mt-4">
+            Beyond the wholesale counter, our retail showroom offers in-person consultations, product displays, and design support. Browse curated collections at Your Showroom at TPS.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+            {[
+              { label: "Bathroom Showroom", href: "https://www.yourshowroomattps.com/bathroom" },
+              { label: "Kitchen Showroom", href: "https://www.yourshowroomattps.com/kitchen" },
+              { label: "Lighting Showroom", href: "https://www.yourshowroomattps.com/lighting" },
+              { label: "Browse the Full Catalog", href: "https://www.yourshowroomattps.com" },
+            ].map(card => (
+              <a
+                key={card.href}
+                href={card.href}
+                target="_blank"
+                rel="noopener"
+                className="block border-2 border-[#1c3454] rounded-lg p-6 text-center hover:bg-[#1c3454] hover:text-white transition-colors group"
+              >
+                <span className="block font-serif text-lg font-semibold text-[#1c3454] group-hover:text-white">{card.label}</span>
+                <span className="block mt-2 text-sm text-[#bf9c43]">Visit →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTABand />
     </>
   );

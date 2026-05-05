@@ -202,6 +202,20 @@ app.post("/api/contact", async (req, res) => {
 
 app.get("/healthz", (_req, res) => res.send("ok"));
 
+// Ghost category URL redirects — these paths used to render the SPA homepage shell
+// with no real content (Google indexed them and downranked the GBP profile).
+// The retail site (yourshowroomattps.com) has real category content; 301 these
+// paths there so link equity transfers and the empty pages drop out of the index.
+const GHOST_CATEGORY_REDIRECTS: Record<string, string> = {
+  "/lighting": "https://www.yourshowroomattps.com/lighting",
+  "/bathroom": "https://www.yourshowroomattps.com/bathroom",
+  "/kitchen": "https://www.yourshowroomattps.com/kitchen",
+  "/plumbing-supply": "https://www.yourshowroomattps.com/plumbing-supply",
+};
+for (const [from, to] of Object.entries(GHOST_CATEGORY_REDIRECTS)) {
+  app.get(from, (_req, res) => res.redirect(301, to));
+}
+
 // Serve built SPA
 const distDir = path.resolve(__dirname, "../dist");
 app.use(express.static(distDir));
