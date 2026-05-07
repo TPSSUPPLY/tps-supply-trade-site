@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Resend } from "resend";
+import { LLMS_TXT, LLMS_FULL_TXT } from "./llms";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -201,6 +202,14 @@ app.post("/api/contact", async (req, res) => {
 });
 
 app.get("/healthz", (_req, res) => res.send("ok"));
+
+// AI-search optimization: serve llms.txt for AI crawlers BEFORE the catch-all + ghost redirects
+app.get("/llms.txt", (_req, res) => {
+  res.type("text/plain").send(LLMS_TXT);
+});
+app.get("/llms-full.txt", (_req, res) => {
+  res.type("text/plain").send(LLMS_FULL_TXT);
+});
 
 // Ghost category URL redirects — these paths used to render the SPA homepage shell
 // with no real content (Google indexed them and downranked the GBP profile).
