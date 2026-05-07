@@ -21,7 +21,7 @@ const BLOG_POSTS = [
 
 const urls = [
   "/", "/about", "/services", "/brands", "/categories", "/trade",
-  "/credit-application", "/locations", "/blog", "/contact",
+  "/credit-application", "/locations", "/blog", "/contact", "/install-guides",
   ...BLOG_POSTS.map(s => `/blog/${s}`),
   ...CATEGORIES.map(s => `/categories/${s}`),
   ...TRADES.map(s => `/trade/${s}`),
