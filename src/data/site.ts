@@ -10,8 +10,8 @@ export const SITE = {
   state: "NJ",
   zip: "07960",
   hours: [
-    { d: "Monday – Friday", h: "7:00 AM – 5:00 PM" },
-    { d: "Saturday", h: "8:00 AM – 2:00 PM" },
+    { d: "Monday – Friday", h: "7:00 AM – 4:30 PM" },
+    { d: "Saturday", h: "8:00 AM – 1:00 PM" },
     { d: "Sunday", h: "Closed" },
   ],
   domain: "www.tpssupply.com",

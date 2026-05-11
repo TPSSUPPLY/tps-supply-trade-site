@@ -28,7 +28,7 @@ const FAQS = [
   { q: "Where can I get a Brizo parts diagram?", a: "Brizo publishes parts diagrams and exploded-views in their literature library at brizo.com/literature. If you can't find a specific model, our counter team can pull it for you while you wait — call (973) 538-3662." },
   { q: "What's the standard rough-in for a residential toilet?", a: "Standard residential toilet rough-in is 12 inches from the finished wall to the center of the closet flange. Some brands offer 10\" or 14\" variants for retrofit. Always verify against the specific model's spec sheet." },
   { q: "Does TPS Supply stock common faucet cartridges?", a: "Yes. We stock the most common Delta, Moen, Kohler, and Brizo cartridges at our Morristown counter. For less common cartridges we can usually order same-day or next-day." },
-  { q: "What hours is the will-call counter open?", a: "Monday through Friday 7:00 AM to 5:00 PM, Saturday 8:00 AM to 2:00 PM. Closed Sunday." },
+  { q: "What hours is the will-call counter open?", a: "Monday through Friday 7:00 AM to 4:30 PM, Saturday 8:00 AM to 1:00 PM. Closed Sunday." },
   { q: "Can I bring a part and have someone identify it at the counter?", a: "Yes. Walk-ins are welcome during counter hours. Bring the broken part — we'll match it to a current product or order the equivalent." },
   { q: "Where is TPS Supply located?", a: "108 Ridgedale Avenue, Building 4, Morristown, NJ 07960. Phone (973) 538-3662." },
   { q: "Do you have a delivery service for contractors?", a: "Yes. We offer local delivery within Morris County for trade accounts. Call the counter for same-day or scheduled delivery options." },
@@ -141,7 +141,7 @@ export default function InstallGuides() {
         <div className="container-x py-16 text-center">
           <h2 className="h-section">Need a spec ASAP?</h2>
           <p className="mt-4 max-w-2xl mx-auto opacity-90">
-            Our counter is open Mon-Fri 7am-5pm, Sat 8am-2pm at <strong>108 Ridgedale Ave Bldg 4, Morristown NJ</strong>. Call <a href="tel:+19735383662" className="underline text-[#bf9c43]">(973) 538-3662</a> — we can pull spec sheets and parts numbers while you wait.
+            Our counter is open Mon-Fri 7am-4:30pm, Sat 8am-1pm at <strong>108 Ridgedale Ave Bldg 4, Morristown NJ</strong>. Call <a href="tel:+19735383662" className="underline text-[#bf9c43]">(973) 538-3662</a> — we can pull spec sheets and parts numbers while you wait.
           </p>
           <p className="mt-6 text-sm opacity-75">
             Need design-side support for the homeowner? Our retail showroom is at the same address: <a href="https://www.yourshowroomattps.com/morristown-showroom" target="_blank" rel="noopener" className="underline text-[#bf9c43]">yourshowroomattps.com/morristown-showroom</a>

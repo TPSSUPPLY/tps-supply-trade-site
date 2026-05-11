@@ -48,7 +48,7 @@ export default function BlogPostLayout({ title, slug, category, date, descriptio
         <div className="mt-12 p-6 border-l-4 border-brand-accent bg-brand-cream">
           <h3 className="font-serif text-xl font-bold text-brand-blue-dark mb-2">Need this delivered today?</h3>
           <p className="text-brand-charcoal mb-4">
-            Call our counter at <a href={`tel:${SITE.phoneRaw}`} className="text-brand-blue font-semibold underline">{SITE.phone}</a> or visit us at {SITE.address}, {SITE.city} {SITE.state} {SITE.zip}. Mon–Fri 7am–5pm, Sat 8am–2pm.
+            Call our counter at <a href={`tel:${SITE.phoneRaw}`} className="text-brand-blue font-semibold underline">{SITE.phone}</a> or visit us at {SITE.address}, {SITE.city} {SITE.state} {SITE.zip}. Mon–Fri 7am–4:30pm, Sat 8am–1pm.
           </p>
           <div className="flex flex-wrap gap-3">
             <a href={`tel:${SITE.phoneRaw}`} className="btn-primary">Call the counter</a>
