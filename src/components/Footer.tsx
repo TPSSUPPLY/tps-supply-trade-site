@@ -32,6 +32,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-1 text-sm text-white/85">
             {SITE.hours.map(h => <li key={h.d}><span className="font-semibold">{h.d}:</span> {h.h}</li>)}
           </ul>
+          <p className="text-xs italic text-brand-accent mt-2">{SITE.hoursNote}</p>
         </div>
       </div>
       <div className="border-t border-white/10">

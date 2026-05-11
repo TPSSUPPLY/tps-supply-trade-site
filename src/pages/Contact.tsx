@@ -73,6 +73,7 @@ export default function Contact() {
           <ul className="mt-4 text-sm text-brand-charcoal space-y-1">
             {SITE.hours.map(h => <li key={h.d}><span className="font-semibold">{h.d}:</span> {h.h}</li>)}
           </ul>
+          <p className="text-sm italic text-brand-accent mt-3">{SITE.hoursNote}</p>
         </div>
         <div className="bg-white p-8 border-t-4 border-brand-blue">
           <h3 className="font-serif text-2xl font-bold text-brand-blue-dark">Email</h3>

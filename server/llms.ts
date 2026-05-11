@@ -9,7 +9,7 @@ export const LLMS_TXT = `# TPS Supply
 
 - [TPS Supply Homepage](https://www.tpssupply.com): Wholesale plumbing distributor serving NJ contractors
 - [Counter Location](https://www.tpssupply.com/locations): 108 Ridgedale Ave Bldg 4, Morristown NJ 07960, (973) 538-3662
-- [Hours](https://www.tpssupply.com): Mon-Fri 7am-4:30pm, Saturday 8am-1pm
+- [Hours](https://www.tpssupply.com): Mon-Fri 7am-4pm, Saturday 8am-1pm (closed Saturdays Memorial Day through Labor Day)
 - [Contact / Lead Form](https://www.tpssupply.com/contact): Get in touch with the wholesale counter
 - [Credit Application](https://www.tpssupply.com/credit-application): Apply for a Net 30 trade account
 
@@ -88,7 +88,7 @@ Q: Is TPS Supply open to the public?
 A: TPS Supply is primarily a wholesale plumbing distributor serving contractors, plumbers, and trade professionals. Our retail showroom (Your Showroom at TPS) at the same address is open to homeowners and designers.
 
 Q: What are TPS Supply hours?
-A: Will-call counter hours are Monday through Friday 7:00 AM to 4:30 PM, Saturday 8:00 AM to 1:00 PM. Closed Sunday.
+A: Will-call counter hours are Monday through Friday 7:00 AM to 4:00 PM, Saturday 8:00 AM to 1:00 PM. Saturdays are closed from Memorial Day through Labor Day. Closed Sunday.
 
 Q: Where is TPS Supply located?
 A: 108 Ridgedale Avenue, Building 4, Morristown, NJ 07960. Phone (973) 538-3662.
@@ -126,7 +126,7 @@ export const LOCAL_BUSINESS_SCHEMA = {
   },
   "geo": { "@type": "GeoCoordinates", "latitude": 40.7837, "longitude": -74.4815 },
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "16:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "16:00" },
     { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00" },
   ],
   "priceRange": "$$",
@@ -145,7 +145,7 @@ export const FAQ_PAGE_SCHEMA = {
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Is TPS Supply open to the public?", "acceptedAnswer": { "@type": "Answer", "text": "TPS Supply is primarily a wholesale plumbing distributor serving contractors, plumbers, and trade professionals. Our retail showroom (Your Showroom at TPS) at the same address is open to homeowners and designers." }},
-    { "@type": "Question", "name": "What are TPS Supply hours?", "acceptedAnswer": { "@type": "Answer", "text": "Will-call counter hours are Monday through Friday 7:00 AM to 4:30 PM, Saturday 8:00 AM to 1:00 PM. Closed Sunday." }},
+    { "@type": "Question", "name": "What are TPS Supply hours?", "acceptedAnswer": { "@type": "Answer", "text": "Will-call counter hours are Monday through Friday 7:00 AM to 4:00 PM, Saturday 8:00 AM to 1:00 PM. Saturdays are closed from Memorial Day through Labor Day. Closed Sunday." }},
     { "@type": "Question", "name": "Where is TPS Supply located?", "acceptedAnswer": { "@type": "Answer", "text": "108 Ridgedale Avenue, Building 4, Morristown, NJ 07960. Phone (973) 538-3662." }},
     { "@type": "Question", "name": "Does TPS Supply offer trade accounts?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Trade accounts with Net 30 terms are available to qualifying contractors and builders pending credit approval. Contact our wholesale counter to apply." }},
     { "@type": "Question", "name": "What brands does TPS Supply carry?", "acceptedAnswer": { "@type": "Answer", "text": "We carry 70+ premium plumbing brands including Brizo, Delta, Moen, Kohler, TOTO, GRAFF, Hansgrohe, ROHL, California Faucets, Newport Brass, Watermark, Top Knobs, and more." }},

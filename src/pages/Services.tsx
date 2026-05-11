@@ -19,7 +19,7 @@ export default function Services() {
         <div className="container-x py-20">
           <span className="eyebrow text-brand-accent">Services</span>
           <h1 className="h-display text-white mt-3">Built Around the Working Day.</h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/85">From a 6:55am will-call grab to a 4:30pm jobsite drop, our service model exists for one reason: keep your crew moving.</p>
+          <p className="mt-6 max-w-2xl text-lg text-white/85">From a 6:55am will-call grab to a 3:45pm jobsite drop, our service model exists for one reason: keep your crew moving.</p>
         </div>
       </section>
       <section className="container-x py-20 grid md:grid-cols-2 lg:grid-cols-3 gap-6">

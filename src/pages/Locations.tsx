@@ -25,6 +25,7 @@ export default function Locations() {
           <ul className="mt-5 text-sm text-brand-charcoal space-y-1 border-t pt-4">
             {SITE.hours.map(h => <li key={h.d}><span className="font-semibold">{h.d}:</span> {h.h}</li>)}
           </ul>
+          <p className="text-sm italic text-brand-accent mt-3">{SITE.hoursNote}</p>
         </div>
         <div className="lg:col-span-2">
           <h2 className="font-serif text-2xl font-bold text-brand-blue-dark mb-4">Service Area</h2>

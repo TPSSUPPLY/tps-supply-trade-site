@@ -37,6 +37,7 @@ export default function About() {
             <ul className="mt-4 text-sm text-brand-charcoal space-y-1">
               {SITE.hours.map(h => <li key={h.d}><span className="font-semibold">{h.d}:</span> {h.h}</li>)}
             </ul>
+            <p className="text-sm italic text-brand-accent mt-3">{SITE.hoursNote}</p>
           </div>
         </div>
       </section>
