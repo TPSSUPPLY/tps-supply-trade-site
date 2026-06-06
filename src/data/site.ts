@@ -23,7 +23,7 @@ export const PREMIUM_BRANDS = [
   "Moen", "Rohl", "Toto", "Gerber", "Brizo", "Delta", "Kohler",
 ];
 export const ROUGH_BRANDS = [
-  "Watts", "Sharkbite", "Viega", "Charlotte Pipe", "Apollo", "Nibco", "Wirsbo",
+  "Watts", "Sharkbite", "Viega", "Charlotte Pipe", "Apollo", "Nibco", "Wirsbo", "Omega Flex",
 ];
 
 export const CITIES = [

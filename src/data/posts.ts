@@ -12,6 +12,14 @@ export interface PostMeta {
 // Hero images — Unsplash stock photos. Swap with real product/jobsite photography later.
 export const POSTS: PostMeta[] = [
   {
+    slug: "tracpipe-system-update-2026",
+    title: "Omega Flex TracPipe System Update — What Contractors Need to Know",
+    excerpt: "Omega Flex is rolling out the next generation of TracPipe fittings — same proven CSST system, with installation upgrades aimed at speed, cleaner finished work, and easier commercial sizing. Here's what we're hearing and what changes for the field.",
+    date: "June 6, 2026",
+    category: "Plumbing",
+    image: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=1600&q=80",
+  },
+  {
     slug: "same-day-pipe-delivery-morris-county-nj",
     title: "Same-Day Pipe Delivery in Morris County NJ — How TPS Supply Keeps Contractors Moving",
     excerpt: "Inside the 90-minute window: what's stocked on the racks, who calls it in, and why a 7am open changes the whole day on a job.",

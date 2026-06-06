@@ -1,13 +1,22 @@
+import { Link } from "react-router-dom";
 import Seo, { localBusinessSchema } from "../components/Seo";
 import CTABand from "../components/CTABand";
 import { PREMIUM_BRANDS, ROUGH_BRANDS } from "../data/site";
 
+// Brands with a dedicated landing page. Tiles for these become clickable links;
+// all other tiles render as plain divs.
+const BRAND_LINKS: Record<string, string> = {
+  "Omega Flex": "/brands/omega-flex",
+};
+
 function BrandTile({ name }: { name: string }) {
-  return (
-    <div className="aspect-[3/2] bg-white border border-neutral-200 flex items-center justify-center hover:border-brand-blue transition group">
-      <span className="font-serif text-2xl font-bold text-brand-blue-dark group-hover:text-brand-blue text-center px-3">{name}</span>
-    </div>
-  );
+  const tileClasses = "aspect-[3/2] bg-white border border-neutral-200 flex items-center justify-center hover:border-brand-blue transition group";
+  const label = <span className="font-serif text-2xl font-bold text-brand-blue-dark group-hover:text-brand-blue text-center px-3">{name}</span>;
+  const href = BRAND_LINKS[name];
+  if (href) {
+    return <Link to={href} className={tileClasses} aria-label={`${name} brand page`}>{label}</Link>;
+  }
+  return <div className={tileClasses}>{label}</div>;
 }
 
 export default function Brands() {

@@ -11,6 +11,7 @@ const CATEGORIES = ["rough-plumbing","finish-plumbing","water-heaters","commerci
 const TRADES = ["plumbers","builders-contractors","property-managers","masons","restaurants-bars"];
 const CITIES = ["morristown","denville","madison","chatham","mendham","chester","boonton","randolph","parsippany","florham-park","dover","rockaway","wharton","stanhope","mountain-lakes","bernardsville"];
 const BLOG_POSTS = [
+  "tracpipe-system-update-2026",
   "same-day-pipe-delivery-morris-county-nj",
   "press-fittings-vs-sweating-propress-megapress-propex",
   "boiler-hydronic-heating-supply-northern-nj",
@@ -20,7 +21,7 @@ const BLOG_POSTS = [
 ];
 
 const urls = [
-  "/", "/about", "/services", "/brands", "/categories", "/trade",
+  "/", "/about", "/services", "/brands", "/brands/omega-flex", "/categories", "/trade",
   "/credit-application", "/locations", "/blog", "/contact", "/install-guides",
   ...BLOG_POSTS.map(s => `/blog/${s}`),
   ...CATEGORIES.map(s => `/categories/${s}`),

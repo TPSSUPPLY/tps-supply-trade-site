@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Brands from "./pages/Brands";
+import OmegaFlex from "./pages/brands/OmegaFlex";
 import Categories from "./pages/Categories";
 import CategoryDetail from "./pages/CategoryDetail";
 import Trade from "./pages/Trade";
@@ -18,6 +19,7 @@ import BoilerHydronicSupply from "./pages/blog/BoilerHydronicSupply";
 import WholeHouseFiltration from "./pages/blog/WholeHouseFiltration";
 import WhyOpenAt7am from "./pages/blog/WhyOpenAt7am";
 import Top10PlumbingTools from "./pages/blog/Top10PlumbingTools";
+import TracPipeSystemUpdate from "./pages/blog/TracPipeSystemUpdate";
 import Contact from "./pages/Contact";
 import InstallGuides from "./pages/InstallGuides";
 import GeoCity from "./pages/GeoCity";
@@ -34,6 +36,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/brands" element={<Brands />} />
+            <Route path="/brands/omega-flex" element={<OmegaFlex />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/categories/:slug" element={<CategoryDetail />} />
             <Route path="/trade" element={<Trade />} />
@@ -47,6 +50,7 @@ export default function App() {
             <Route path="/blog/whole-house-water-filtration-morris-county" element={<WholeHouseFiltration />} />
             <Route path="/blog/why-pros-open-7am-tps-supply-counter" element={<WhyOpenAt7am />} />
             <Route path="/blog/top-10-plumbing-tools-pro-2026" element={<Top10PlumbingTools />} />
+            <Route path="/blog/tracpipe-system-update-2026" element={<TracPipeSystemUpdate />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/install-guides" element={<InstallGuides />} />
             {CITIES.map(c => (
