@@ -16,7 +16,7 @@
 // each component, which invites drift. See ssrMetaForPath's return of null.
 
 import { CITIES, SITE } from "../src/data/site";
-import { FAQS, faqPageSchema } from "../src/data/faqs";
+import { FAQS, geoFaqs, faqPageSchema } from "../src/data/faqs";
 import { localBusinessSchema } from "../src/data/schema";
 
 const DOMAIN = `https://${SITE.domain}`;
@@ -26,7 +26,11 @@ interface RouteMeta {
   description: string;
   canonical: string;
   schemas: object[];
-  /** Drop the shell's site-wide FAQPage block so the page-specific one is unambiguous. */
+  /**
+   * Drop the shell's site-wide FAQPage block. Set on every route that ships its
+   * own FAQPage, so a URL never carries two competing FAQPage graphs — the raw
+   * HTML then matches what Helmet renders after hydration.
+   */
   replaceFaqSchema?: boolean;
 }
 
@@ -43,7 +47,9 @@ for (const city of CITIES) {
         areaServed: { "@type": "City", name: `${city.name}, NJ` },
         name: `TPS Supply — Plumbing Supply for ${city.name}, NJ`,
       }),
+      faqPageSchema(geoFaqs(city)),
     ],
+    replaceFaqSchema: true,
   });
 }
 
