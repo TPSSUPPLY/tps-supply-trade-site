@@ -22,6 +22,8 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-white/85">
             {TRADES.map(t => <li key={t.slug}><Link to={`/trade/${t.slug}`} className="hover:text-brand-accent">{t.title}</Link></li>)}
             <li><Link to="/credit-application" className="hover:text-brand-accent">Credit Application</Link></li>
+            <li><Link to="/install-guides" className="hover:text-brand-accent">Install Guides</Link></li>
+            <li><Link to="/faq" className="hover:text-brand-accent">FAQ</Link></li>
           </ul>
         </div>
         <div>

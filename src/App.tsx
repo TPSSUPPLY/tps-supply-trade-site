@@ -21,6 +21,7 @@ import WhyOpenAt7am from "./pages/blog/WhyOpenAt7am";
 import Top10PlumbingTools from "./pages/blog/Top10PlumbingTools";
 import TracPipeSystemUpdate from "./pages/blog/TracPipeSystemUpdate";
 import Contact from "./pages/Contact";
+import Faq from "./pages/Faq";
 import InstallGuides from "./pages/InstallGuides";
 import GeoCity from "./pages/GeoCity";
 import NotFound from "./pages/NotFound";
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/blog/top-10-plumbing-tools-pro-2026" element={<Top10PlumbingTools />} />
             <Route path="/blog/tracpipe-system-update-2026" element={<TracPipeSystemUpdate />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<Faq />} />
             <Route path="/install-guides" element={<InstallGuides />} />
             {CITIES.map(c => (
               <Route key={c.slug} path={`/plumbing-supply-${c.slug}-nj`} element={<GeoCity citySlug={c.slug} />} />

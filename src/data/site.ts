@@ -26,8 +26,17 @@ export const ROUGH_BRANDS = [
   "Watts", "Sharkbite", "Viega", "Charlotte Pipe", "Apollo", "Nibco", "Wirsbo", "Omega Flex",
 ];
 
-export const CITIES = [
+export interface City {
+  slug: string;
+  name: string;
+  /** Driving distance from the Morristown counter; "0" means the counter is in town. */
+  miles: string;
+  note: string;
+}
+
+export const CITIES: City[] = [
   { slug: "morristown", name: "Morristown", miles: "0", note: "Counter is right in town." },
+  { slug: "morris-plains", name: "Morris Plains", miles: "3", note: "Just north up Speedwell Ave." },
   { slug: "denville", name: "Denville", miles: "6", note: "Quick run up Route 10." },
   { slug: "madison", name: "Madison", miles: "5", note: "Easy hop down Madison Ave." },
   { slug: "chatham", name: "Chatham", miles: "7", note: "Short drive east." },

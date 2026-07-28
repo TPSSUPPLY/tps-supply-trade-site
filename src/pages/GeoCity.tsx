@@ -2,16 +2,21 @@ import { Navigate, Link } from "react-router-dom";
 import Seo, { localBusinessSchema } from "../components/Seo";
 import CTABand from "../components/CTABand";
 import { SITE, CITIES, PREMIUM_BRANDS, ROUGH_BRANDS } from "../data/site";
+import { geoFaqs, faqPageSchema } from "../data/faqs";
 
 export default function GeoCity({ citySlug }: { citySlug?: string }) {
   const city = CITIES.find(c => c.slug === citySlug);
   if (!city) return <Navigate to="/locations" replace />;
 
   const path = `/plumbing-supply-${city.slug}-nj`;
-  const schema = localBusinessSchema({
-    "areaServed": { "@type": "City", "name": `${city.name}, NJ` },
-    "name": `TPS Supply — Plumbing Supply for ${city.name}, NJ`,
-  });
+  const faqs = geoFaqs(city);
+  const schema = [
+    localBusinessSchema({
+      "areaServed": { "@type": "City", "name": `${city.name}, NJ` },
+      "name": `TPS Supply — Plumbing Supply for ${city.name}, NJ`,
+    }),
+    faqPageSchema(faqs),
+  ];
 
   return (
     <>
@@ -82,6 +87,117 @@ export default function GeoCity({ citySlug }: { citySlug?: string }) {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="container-x py-16">
+        <span className="eyebrow">Off the Shelf</span>
+        <h2 className="h-section mt-2 text-brand-blue-dark">What {city.name} Contractors Buy Most</h2>
+        <div className="mt-5 max-w-3xl space-y-4 text-brand-charcoal leading-relaxed">
+          <p>
+            Morris County housing stock skews old, and that shapes what moves across our counter. A lot of {city.name} work
+            happens inside colonials and capes built long before anybody was thinking about a 1/2" PEX manifold — galvanized
+            supply that's finally closed up, cast iron stacks with a cracked hub, drain lines that were never vented to
+            anything like current code. That means transition fittings, dielectric unions, shielded no-hub couplings and
+            closet flange repair kits go out the door constantly, alongside the copper and PEX for the new runs.
+          </p>
+          <p>
+            Hydronic retrofits are the other steady driver. Plenty of {city.name} homes still run on a boiler and cast iron
+            radiators, and when one gets replaced the installer needs circulators, zone valves, air separators, expansion
+            tanks, backflow preventers and the black iron near-boiler piping to tie it all together. We stock the Weil-McLain
+            and U.S. Boiler side of that work along with the Watts and Apollo trim that goes around it. Tank-to-tankless
+            conversions land in the same bucket — usually a gas line that needs upsizing, a stainless vent kit, isolation
+            valve sets, and a condensate route that has to actually go somewhere.
+          </p>
+          <p>
+            On the commercial side, {city.name} buildouts and tenant fit-outs pull floor drains, carriers, grease
+            interceptors, pre-rinse units, mop basins, backflow assemblies and ADA trim. Restaurant and retail spaces turn
+            over, and when a GC is holding an inspection date, the difference between a two-day lead time and material on
+            the shelf is the whole schedule. That's the inventory bet we make.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-brand-cream border-y">
+        <div className="container-x py-16">
+          <span className="eyebrow">Logistics</span>
+          <h2 className="h-section mt-2 text-brand-blue-dark">Getting Pipe to Your {city.name} Jobsite</h2>
+          <div className="mt-5 grid lg:grid-cols-2 gap-8">
+            <div className="space-y-4 text-brand-charcoal leading-relaxed">
+              <p>
+                The cutoff is noon. Call, email or walk in an order before then and it goes on a truck the same day —
+                usually rolling toward {city.name} within about 90 minutes of us pulling it. After noon, it ships next day.
+                We'd rather tell you that plainly than promise a same-day run we can't make, because a delivery that shows
+                up at 4:30 when the crew left at 3 isn't a delivery.
+              </p>
+              <p>
+                Will-call opens at 7:00 AM, an hour before most jobs start. Call ahead and we'll stage the order so it's
+                sitting on the counter with your name on it — back out and be in {city.name} before the crew is unloading.
+                Saturday pickup runs 8:00 AM to 1:00 PM, {SITE.hoursNote.toLowerCase()}.
+              </p>
+            </div>
+            <div className="bg-white border-l-4 border-brand-accent p-6">
+              <h3 className="font-serif text-xl font-bold text-brand-blue-dark">Stocked for Morris County work</h3>
+              <ul className="mt-4 space-y-2 text-sm text-brand-charcoal">
+                <li><span className="font-semibold">Copper</span> — Type L, Type M and DWV in common sizes, plus fittings, valves and press.</li>
+                <li><span className="font-semibold">PEX</span> — tubing, manifolds, expansion and crimp fittings for repipes and radiant.</li>
+                <li><span className="font-semibold">DWV</span> — PVC, ABS and cast iron with no-hub couplings and closet hardware.</li>
+                <li><span className="font-semibold">Gas</span> — black iron and CSST including Omega Flex TracPipe.</li>
+                <li><span className="font-semibold">Hydronic</span> — circulators, zone valves, expansion tanks, boiler trim.</li>
+              </ul>
+              <p className="mt-4 text-xs italic text-brand-charcoal">
+                Pipe pricing tracks the commodity market — call the counter for a current quote on your sizes and quantities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-x py-16">
+        <span className="eyebrow">How It Works</span>
+        <h2 className="h-section mt-2 text-brand-blue-dark">Working with TPS Supply from {city.name}</h2>
+        <div className="mt-5 max-w-3xl space-y-4 text-brand-charcoal leading-relaxed">
+          <p>
+            Most {city.name} contractors start with a trade account. It takes a couple of minutes to apply, and once
+            you're approved you get Net 30 terms, contractor pricing, and project pricing when a job is big enough to
+            warrant a quote. You don't need an account to buy — anyone can walk up to the counter — but if you're buying
+            every week, the terms and the pricing are the reason to set one up.
+          </p>
+          <p>
+            Once you're on the books, the fastest way to order is the phone. Call {SITE.phone}, tell us what you need and
+            whether it's a will-call or a delivery to {city.name}, and it gets pulled. You'll talk to somebody who knows
+            the difference between Type L and Type M without having to look it up, and who can tell you what's actually on
+            the shelf right now instead of what a website claims. Bring in a broken part and we'll match it or find the
+            current equivalent.
+          </p>
+          <p>
+            Deliveries route off our Morristown counter, so {city.name} sits on a regular run rather than waiting for a
+            regional warehouse to schedule it. If you need material staged for a phased job, or a standing order for a
+            development, the counter can set that up too.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-neutral-50 border-y">
+        <div className="container-x py-16">
+          <span className="eyebrow">Questions</span>
+          <h2 className="h-section mt-2 text-brand-blue-dark">{city.name} Plumbing Supply — Common Questions</h2>
+          <div className="mt-8 grid md:grid-cols-2 gap-6">
+            {faqs.map(({ q, a, link }) => (
+              <div key={q} className="border-l-4 border-brand-accent pl-4">
+                <h3 className="font-semibold text-brand-blue-dark">{q}</h3>
+                <p className="mt-2 text-sm text-brand-charcoal leading-relaxed">{a}</p>
+                {link && (
+                  <Link to={link.to} className="mt-2 inline-block text-sm font-semibold text-brand-blue hover:text-brand-accent">
+                    {link.label} →
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-sm text-brand-charcoal">
+            More answers on our <Link to="/faq" className="font-semibold text-brand-blue hover:text-brand-accent">plumbing supply FAQ</Link>.
+          </p>
         </div>
       </section>
 

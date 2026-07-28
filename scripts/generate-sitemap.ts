@@ -1,15 +1,15 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+// Import the real data so adding a city/category/trade in site.ts is enough —
+// a hand-maintained copy here silently omits new pages from the sitemap.
+import { CITIES, CATEGORIES, TRADES } from "../src/data/site";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const DOMAIN = "https://www.tpssupply.com";
 
-const CATEGORIES = ["rough-plumbing","finish-plumbing","water-heaters","commercial-plumbing","tools-accessories","pipe-supply"];
-const TRADES = ["plumbers","builders-contractors","property-managers","masons","restaurants-bars"];
-const CITIES = ["morristown","denville","madison","chatham","mendham","chester","boonton","randolph","parsippany","florham-park","dover","rockaway","wharton","stanhope","mountain-lakes","bernardsville"];
 const BLOG_POSTS = [
   "tracpipe-system-update-2026",
   "same-day-pipe-delivery-morris-county-nj",
@@ -22,11 +22,11 @@ const BLOG_POSTS = [
 
 const urls = [
   "/", "/about", "/services", "/brands", "/brands/omega-flex", "/categories", "/trade",
-  "/credit-application", "/locations", "/blog", "/contact", "/install-guides",
+  "/credit-application", "/locations", "/blog", "/contact", "/faq", "/install-guides",
   ...BLOG_POSTS.map(s => `/blog/${s}`),
-  ...CATEGORIES.map(s => `/categories/${s}`),
-  ...TRADES.map(s => `/trade/${s}`),
-  ...CITIES.map(s => `/plumbing-supply-${s}-nj`),
+  ...CATEGORIES.map(c => `/categories/${c.slug}`),
+  ...TRADES.map(t => `/trade/${t.slug}`),
+  ...CITIES.map(c => `/plumbing-supply-${c.slug}-nj`),
 ];
 
 const today = new Date().toISOString().split("T")[0];

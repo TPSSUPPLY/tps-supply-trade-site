@@ -1,8 +1,10 @@
 import express from "express";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Resend } from "resend";
 import { LLMS_TXT, LLMS_FULL_TXT } from "./llms";
+import { applySsrMeta } from "./ssr-meta";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -228,8 +230,12 @@ for (const [from, to] of Object.entries(GHOST_CATEGORY_REDIRECTS)) {
 // Serve built SPA
 const distDir = path.resolve(__dirname, "../dist");
 app.use(express.static(distDir));
-app.get(/.*/, (_req, res) => {
-  res.sendFile(path.join(distDir, "index.html"));
+
+// The shell is read once at boot and cached; per-request work is a string
+// rewrite. See server/ssr-meta.ts for why raw-HTML metadata is injected here.
+const shellHtml = fs.readFileSync(path.join(distDir, "index.html"), "utf8");
+app.get(/.*/, (req, res) => {
+  res.type("html").send(applySsrMeta(shellHtml, req.path));
 });
 
 const PORT = Number(process.env.PORT) || 8080;
